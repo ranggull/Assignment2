@@ -15,24 +15,19 @@ public class Assignment2 {
 		   
 		   String decision, order, another = "y";
 		   int zipCode;
-		   float tax;
-		   float deliveryFee;
-		   float burgerValue;
-		   float drinkValue;
-		   float friesValue;
-		   float dessertValue;
-		   float burgerSubtotal;
-		   float drinkSubtotal;
-		   float friesSubtotal;
-		   float dessertSubtotal;
-		   float subtotal;
-		   float total;	   
-		   
-		   burgerValue = (float) 4.50;
-		   drinkValue = (float) 1.50;
-		   friesValue = (float) 2.50;
-		   dessertValue = (float) 3.00;
-		   tax = (float) 0.05;
+		   double tax = 0.05;
+		   float deliveryFee = 0;
+		   double burgerValue = 4.50;
+		   double drinkValue = 1.50;
+		   double friesValue = 2.50;
+		   double dessertValue = 3.00;
+		   double burgerSubtotal = 0;
+		   double drinkSubtotal = 0;
+		   double friesSubtotal = 0;
+		   double dessertSubtotal = 0;
+		   double subtotal;
+		   double orderTax;
+		   double total;	   
 		   
 		   Scanner scan = new Scanner(System.in);
 		   		   
@@ -86,9 +81,8 @@ public class Assignment2 {
 
 				 else if(order.equalsIgnoreCase("dessert")) {
 					 System.out.println("How many desserts would you like?");
-					 dessertSubtotal = (scan.nextInt() * drinkValue);
+					 dessertSubtotal = (scan.nextInt() * dessertValue);
 				}
-		
 				 else {
 					 System.out.println("Invalid Entry. Please type in Burger, Fries, Drink, or Dessert");
 				 }
@@ -100,11 +94,12 @@ public class Assignment2 {
 		   NumberFormat fmt = NumberFormat.getCurrencyInstance();
 			
 			subtotal = (burgerSubtotal + drinkSubtotal + friesSubtotal + dessertSubtotal);
-			total = (subtotal * tax + deliveryFee);	  
+			orderTax = (subtotal * tax);
+			total = (subtotal + orderTax + deliveryFee);	  
 			
 			System.out.println("Your order has been received!");
 			System.out.println("Subtotal: " + fmt.format(subtotal));
-			System.out.println("Tax: " + fmt.format(subtotal * tax));
+			System.out.println("Tax: " + fmt.format(orderTax));
 			System.out.println("Delivery Fee: " + fmt.format(deliveryFee));
 			System.out.println("Total: " + fmt.format(total));
 	   }
