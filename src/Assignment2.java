@@ -13,11 +13,7 @@ public class Assignment2 {
 	   public static void main(String[] args)
 	   {
 		   
-		   char pickUp;
-		   char delivery;
-		   String decision;
-		   String order;
-		   String another = "y";
+		   String decision, order, another = "y";
 		   int zipCode;
 		   float tax;
 		   float deliveryFee;
@@ -25,13 +21,12 @@ public class Assignment2 {
 		   float drinkValue;
 		   float friesValue;
 		   float dessertValue;
-		   Float burgerSubtotal;
-		   Float drinkSubtotal;
-		   Float friesSubtotal;
-		   Float dessertSubtotal;
+		   float burgerSubtotal;
+		   float drinkSubtotal;
+		   float friesSubtotal;
+		   float dessertSubtotal;
 		   float subtotal;
-		   float total;
-		   
+		   float total;	   
 		   
 		   burgerValue = (float) 4.50;
 		   drinkValue = (float) 1.50;
@@ -40,7 +35,7 @@ public class Assignment2 {
 		   tax = (float) 0.05;
 		   
 		   Scanner scan = new Scanner(System.in);
-		   
+		   		   
 		   System.out.println("Welcome to the Flyers Restaurant Command Line Ordering System!");
 		   System.out.println("Is this order for pickup or deliver? (p/d): ");
 		   decision = (scan.nextLine());
@@ -64,9 +59,10 @@ public class Assignment2 {
 	   				System.out.println("Delivery Not Available in your area. Please order for pickup.");
 	   			}
 		   }
-	   			
-			 while (another.equalsIgnoreCase("y"))  // allows y or Y
-		      { 
+	   		
+		   
+		   while (another.equalsIgnoreCase("y")) 
+		   {
 				 System.out.println("What would you like to order?");
 				 System.out.println("Please choose from the following items:");
 				 System.out.println("Burger, Fries, Drink, Dessert");
@@ -77,43 +73,21 @@ public class Assignment2 {
 					 System.out.println("How many burgers would you like?");
 					 burgerSubtotal = (scan.nextInt() * burgerValue);
 				 }
-		
-				 else {
-					 System.out.println("Invalid Entry. Please type in Burger, Fries, Drink, or Dessert");
-				 }
-		
-				 System.out.println("Would you like anything else? (y/n)");
-				 another = scan.nextLine();
-		
-				 order = (scan.nextLine());
-				 if(order.equalsIgnoreCase("drink")) {
+
+				 else if(order.equalsIgnoreCase("drink")) {
 					 System.out.println("How many drinks would you like?");
 					 drinkSubtotal = (scan.nextInt() * drinkValue);
 				 }
 		
-				 else {
-					 System.out.println("Invalid Entry. Please type in Burger, Fries, Drink, or Dessert");
-				 }
-		
-				 System.out.println("Would you like anything else? (y/n");
-				 another = scan.nextLine();
-		
-				 if(order.equalsIgnoreCase("fries")) {
+				 else if(order.equalsIgnoreCase("fries")) {
 					 System.out.println("How many fries would you like?");
 					 friesSubtotal = (scan.nextInt() * friesValue);
 				 }
-		
-				 else {
-					 System.out.println("Invalid Entry. Please type in Burger, Fries, Drink, or Dessert");
-				 }
-		
-				 System.out.println("Would you like anything else? (y/n)");
-				 another = scan.nextLine();
-		
-				 if(order.equalsIgnoreCase("dessert")) {
+
+				 else if(order.equalsIgnoreCase("dessert")) {
 					 System.out.println("How many desserts would you like?");
 					 dessertSubtotal = (scan.nextInt() * drinkValue);
-				 }
+				}
 		
 				 else {
 					 System.out.println("Invalid Entry. Please type in Burger, Fries, Drink, or Dessert");
@@ -121,18 +95,22 @@ public class Assignment2 {
 		
 				 System.out.println("Would you like anything else? (y/n)");
 				 another = scan.nextLine();
-		
-		subtotal = (burgerSubtotal + drinkSubtotal + friesSubtotal + dessertSubtotal);
-		total = (subtotal * tax + deliveryFee);
-		
-		NumberFormat fmt = NumberFormat.getCurrencyInstance();
-		
-		System.out.println("Your order has been received!");
-		System.out.println("Subtotal: " + fmt.format(subtotal));
-		System.out.println("Tax: " + fmt.format(subtotal * tax));
-		System.out.println("Delivery Fee: " + fmt.format(deliveryFee));
-		System.out.println("Total: " + fmt.format(total));
-	      }
-	}
+		   }
+		   
+		   NumberFormat fmt = NumberFormat.getCurrencyInstance();
+			
+			subtotal = (burgerSubtotal + drinkSubtotal + friesSubtotal + dessertSubtotal);
+			total = (subtotal * tax + deliveryFee);	  
+			
+			System.out.println("Your order has been received!");
+			System.out.println("Subtotal: " + fmt.format(subtotal));
+			System.out.println("Tax: " + fmt.format(subtotal * tax));
+			System.out.println("Delivery Fee: " + fmt.format(deliveryFee));
+			System.out.println("Total: " + fmt.format(total));
+	   }
 }
+
+
+
+
 
