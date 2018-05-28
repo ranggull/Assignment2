@@ -41,11 +41,11 @@ public class Assignment2 {
 		   else if (decision.equalsIgnoreCase("d")) {
 		   		System.out.println("Please enter destination Zipcode: ");
 		   		zipCode = (scan.nextInt());
-		   		if (zipCode == 60446) {
+		   		if (zipCode >= 60442 && (zipCode <= 60450)) {
 	   				deliveryFee = (float) 5.00;
 	   				System.out.println("Delivery Available. This is a $5.00 fee.");
 			   }
-	   			else if(zipCode == 60451 || (zipCode == 60441)) {
+	   			else if(zipCode == 60441 || (zipCode == 60451)) {
 	   				deliveryFee = (float) 7.00;
 	   				System.out.println("Delivery Available with Extra Cost. This is a $7.00 fee.");
 	   			}
@@ -63,41 +63,48 @@ public class Assignment2 {
 				 System.out.println("Burger, Fries, Drink, Dessert");
 		
 		
-				 order = (scan.nextLine());
+				 order = (scan.next());
 				 if(order.equalsIgnoreCase("burger")) {
 					 System.out.println("How many burgers would you like?");
-					 burgerSubtotal = (scan.nextInt() * burgerValue);
+					 burgerSubtotal = (burgerSubtotal + (scan.nextInt() * burgerValue));
 				 }
 
 				 else if(order.equalsIgnoreCase("drink")) {
 					 System.out.println("How many drinks would you like?");
-					 drinkSubtotal = (scan.nextInt() * drinkValue);
+					 drinkSubtotal = (drinkSubtotal + (scan.nextInt() * drinkValue));
 				 }
 		
 				 else if(order.equalsIgnoreCase("fries")) {
 					 System.out.println("How many fries would you like?");
-					 friesSubtotal = (scan.nextInt() * friesValue);
+					 friesSubtotal = (friesSubtotal + (scan.nextInt() * friesValue));
 				 }
 
 				 else if(order.equalsIgnoreCase("dessert")) {
 					 System.out.println("How many desserts would you like?");
-					 dessertSubtotal = (scan.nextInt() * dessertValue);
+					 dessertSubtotal = (dessertSubtotal + (scan.nextInt() * dessertValue));
 				}
 				 else {
 					 System.out.println("Invalid Entry. Please type in Burger, Fries, Drink, or Dessert");
 				 }
 		
 				 System.out.println("Would you like anything else? (y/n)");
-				 another = scan.nextLine();
+				 another = scan.next();
+				 
 		   }
 		   
 		   NumberFormat fmt = NumberFormat.getCurrencyInstance();
+		   NumberFormat bill = NumberFormat.getNumberInstance();
+		   
 			
 			subtotal = (burgerSubtotal + drinkSubtotal + friesSubtotal + dessertSubtotal);
 			orderTax = (subtotal * tax);
 			total = (subtotal + orderTax + deliveryFee);	  
 			
-			System.out.println("Your order has been received!");
+			System.out.println("Your order of the following items has been received!");
+			System.out.println("Burger(s): " + (bill.format(burgerSubtotal / burgerValue)));
+			System.out.println("Fries: " + (bill.format(friesSubtotal / friesValue)));
+			System.out.println("Drink(s): " + (bill.format(drinkSubtotal / drinkValue)));
+			System.out.println("Dessert(s): " + (bill.format(dessertSubtotal / dessertValue)));
 			System.out.println("Subtotal: " + fmt.format(subtotal));
 			System.out.println("Tax: " + fmt.format(orderTax));
 			System.out.println("Delivery Fee: " + fmt.format(deliveryFee));
