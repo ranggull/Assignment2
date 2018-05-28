@@ -25,9 +25,7 @@ public class Assignment2 {
 		   double drinkSubtotal = 0;
 		   double friesSubtotal = 0;
 		   double dessertSubtotal = 0;
-		   double subtotal;
-		   double orderTax;
-		   double total;	   
+		   double subtotal, total, orderTax;	   
 		   
 		   Scanner scan = new Scanner(System.in);
 		   		   
@@ -53,15 +51,13 @@ public class Assignment2 {
 	   				deliveryFee = 0;
 	   				System.out.println("Delivery Not Available in your area. Please order for pickup.");
 	   			}
-		   }
-	   		
+		   }		
 		   
 		   while (another.equalsIgnoreCase("y")) 
 		   {
 				 System.out.println("What would you like to order?");
 				 System.out.println("Please choose from the following items:");
 				 System.out.println("Burger, Fries, Drink, Dessert");
-		
 		
 				 order = (scan.next());
 				 if(order.equalsIgnoreCase("burger")) {
@@ -89,8 +85,7 @@ public class Assignment2 {
 		
 				 System.out.println("Would you like anything else? (y/n)");
 				 another = scan.next();
-				 
-		   }
+				 }
 		   
 		   NumberFormat fmt = NumberFormat.getCurrencyInstance();
 		   NumberFormat bill = NumberFormat.getNumberInstance();
@@ -109,8 +104,9 @@ public class Assignment2 {
 			System.out.println("Tax: " + fmt.format(orderTax));
 			System.out.println("Delivery Fee: " + fmt.format(deliveryFee));
 			System.out.println("Total: " + fmt.format(total));
-	   }
+	}
 }
+
 
 
 
